@@ -10,6 +10,15 @@
     "node": "18.15.0"
   },
   "scripts": {
+    "server:dev": "cd apps/server && npm run dev",
+    "server:build": "cd apps/server && npm run build",
+    "server:start": "cd apps/server && npm run start",
+    "web:dev": "cd apps/web && npm run dev",
+    "web:build": "cd apps/web && npm run build",
+    "web:start": "cd apps/web && npm run start",
+    "dev": "concurrently \"npm run server:dev\" \"npm run web:dev\"",
+    "build": "npm run server:build && npm run web:build",
+    "start": "concurrently \"npm run server:start\" \"npm run web:start\"",
     "prepare": "husky install"
   },
   "lint-staged": {
@@ -31,6 +40,7 @@
     "@commitlint/cli": "^17.6.5",
     "@commitlint/config-conventional": "^17.6.5",
     "@monorepo-deploy/eslint-config": "*",
+    "concurrently": "^8.1.0",
     "cross-env": "^7.0.3",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.2"
